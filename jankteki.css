@@ -1,0 +1,23 @@
+.shit-list {
+    color: red;
+    font-weight: bold;
+    text-decoration: line-through;
+}
+
+.pinned-container {
+    margin-bottom: 5px;
+    padding: 5px 15px;
+    overflow: visible;
+}
+
+#pinnedArea {
+    clear: both;
+    list-style: none;
+    margin-bottom: 5px;
+    position: relative;
+    padding: 0 10px 5px 10px;
+}
+
+.friends-title {
+    margin-top: 10px;
+}

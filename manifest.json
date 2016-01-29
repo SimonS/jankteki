@@ -1,0 +1,27 @@
+{
+  "manifest_version": 2,
+
+  "name": "Jankteki",
+  "description": "An enhancement suite for jinteki.net",
+  "version": "1.0",
+
+  "page_action": {
+    "default_popup": "popup.html"
+  },
+
+  "content_scripts": [
+    {
+      "matches": [
+        "http://www.jinteki.net/*"
+      ],
+      "js": ["lobby.js"],
+      "css": ["jankteki.css"],
+      "run_at": "document_end"
+    }
+  ],
+
+  "permissions": [
+    "tabs",
+    "http://jinteki.net/play"
+  ]
+}
