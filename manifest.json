@@ -3,7 +3,7 @@
 
   "name": "Jankteki",
   "description": "An enhancement suite for jinteki.net",
-  "version": "1.0",
+  "version": "0.1",
 
   "page_action": {
     "default_popup": "popup.html"

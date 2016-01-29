@@ -27,5 +27,3 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
-
-

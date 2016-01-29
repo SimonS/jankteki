@@ -4,4 +4,4 @@ Currently it maintains a list of friends online and pins links to their running 
 
 Only functionality to add friends is currently there.
 
-Next steps - interface to add from the respective lists.
+[Trello Board for Janteki](https://trello.com/b/sJSYgy2m/jankteki)
