@@ -9,10 +9,17 @@
     "default_popup": "popup.html"
   },
 
+  "background": {
+    "scripts": [
+      "eventPage.js"
+    ],
+    "persistent": false
+  },
+
   "content_scripts": [
     {
       "matches": [
-        "http://www.jinteki.net/*"
+        "http://www.jinteki.net/play"
       ],
       "js": ["lobby.js"],
       "css": ["jankteki.css"],
@@ -21,6 +28,8 @@
   ],
 
   "permissions": [
+    "notifications",
+    "storage",
     "tabs",
     "http://jinteki.net/play"
   ]

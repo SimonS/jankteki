@@ -1,32 +1,33 @@
-var shitList = ['Gray', 'mewmew', 'SillySod', 'bblum', 'peacho'];  // get shitList
+var shitList = [];  // get shitList
 var friends = ['Draz', 'cursor', 'robotgoblin', 'wizard']; // get friends
 
 var observer = new MutationObserver(function() {
     getAllPlayers()
         .filter((player) => shitList.indexOf(player.innerText) !== -1)
-        .forEach((player) => player.classList.add('shit-list'));
+        .forEach((player) => player.classList.add('shit-list')); // this doesn't quite work atm
 
     var pinned = getOrCreatePinned();
     pinned.innerHTML = '';
 
-    var onlineFriends = getAllPlayers()
-        .filter((player) => friends.indexOf(player.innerText) !== -1);
+    chrome.storage.sync.get(['friends'], function (items) {
+        var friends = items.friends || [],
+            onlineFriends = getAllPlayers()
+                .filter((player) => friends.indexOf(player.innerText) !== -1);
 
+        onlineFriends.forEach(function (player, i) {
+            var target = 'friend-' + i;
 
-    onlineFriends.forEach(function (player, i) {
-        var target = 'friend-' + i;
+            Array.from(document.querySelectorAll('#' + target))
+                .forEach((existing) => existing.id = '');
 
-        Array.from(document.querySelectorAll('#' + target)).forEach(function (existing) {
-            existing.id = '';
+            var gameLine = player.closest('.gameline');
+            gameLine.id = target;
+
+            var li = document.createElement('li');
+            li.innerHTML = '<a href="#' + target + '">' + player.innerText + '</a>';
+
+            pinned.appendChild(li);
         });
-
-        var gameLine = player.closest('.gameline');
-        gameLine.id = target;
-
-        var li = document.createElement('li');
-        li.innerHTML = '<a href="#' + target + '">' + player.innerText + '</a>';
-
-        pinned.appendChild(li);
     });
 });
 
@@ -59,3 +60,5 @@ function getOrCreatePinned () {
 
     return pinnedArea;
 }
+
+chrome.runtime.sendMessage({action: "show"});
