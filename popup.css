@@ -2,7 +2,7 @@
     float: right;
 }
 
-ul.friends-list {
+ul#friends-list {
     padding: 0;
     width: 100%;
 }

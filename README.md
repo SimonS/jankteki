@@ -1,7 +1,7 @@
-this is the beginnings of what I hope will be a useful jinteki.net extension.
+I hope one day this will be a useful jinteki.net extension.
 
-Currently it maintains a list of friends online and pins links to their running games to the top of the screen.
+Currently it maintains a list of friends (or cyber-celebrities ;-) ) online and pins links to their running games to the top of the screen.
 
-We can currently add and remove friends, but the popup doesn't update until you click it off and on again.
+Once I've got a couple of dummy icons, and made it look less crap, I shall be releasing this in the Chrome App Store.
 
 [Trello Board for Janteki](https://trello.com/b/sJSYgy2m/jankteki)

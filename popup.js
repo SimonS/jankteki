@@ -1,4 +1,29 @@
 document.addEventListener("DOMContentLoaded", function () {
+    refreshFriendsList();
+
+    var addFriend = document.getElementById('add-friend');
+
+    addFriend.addEventListener('click', function () {
+        chrome.storage.sync.get(['friends'], function (items) {
+            var newFriend = document.getElementById('new-friend').value,
+                friends = items.friends || [];
+
+            if (newFriend.trim() !== '') {
+                friends.push(newFriend);
+                chrome.storage.sync.set({'friends': friends}, refreshFriendsList);
+            }
+        });
+    });
+
+});
+
+function refreshFriendsList() {
+    document.getElementById('new-friend').value = '';
+
+    Array.from(document.querySelectorAll('.friend')).forEach(function (el) {
+        el.parentNode.removeChild(el);
+    });
+
     chrome.storage.sync.get(['friends'], function (items) {
         var friends = items.friends || [];
 
@@ -24,23 +49,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 var index = e.target.closest('.friend').dataset.index;
 
                 friends.splice(index, 1);
-                chrome.storage.sync.set({'friends': friends}, function () {});
+                chrome.storage.sync.set({'friends': friends}, refreshFriendsList);
             })
         });
     });
-
-    var addFriend = document.getElementById('add-friend');
-
-    addFriend.addEventListener('click', function () {
-        chrome.storage.sync.get(['friends'], function (items) {
-            var newFriend = document.getElementById('new-friend').value,
-                friends = items.friends || [];
-
-            if (newFriend.trim() !== '') {
-                friends.push(newFriend);
-                chrome.storage.sync.set({'friends': friends}, function () {});
-            }
-        });
-    });
-
-});
+}
