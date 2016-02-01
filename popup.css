@@ -1,0 +1,12 @@
+.remove-btn {
+    float: right;
+}
+
+ul.friends-list {
+    padding: 0;
+    width: 100%;
+}
+
+li.friend {
+    overflow: hidden;
+}
