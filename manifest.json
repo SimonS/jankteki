@@ -11,13 +11,13 @@
   },
 
   "page_action": {
-    "default_popup": "popup.html",
+    "default_popup": "popup/popup.html",
     "default_icon": "icons/icon48.png"
   },
 
   "background": {
     "scripts": [
-      "eventPage.js"
+      "background/eventPage.js"
     ],
     "persistent": false
   },
@@ -27,8 +27,8 @@
       "matches": [
         "http://www.jinteki.net/play"
       ],
-      "js": ["lobby.js"],
-      "css": ["jankteki.css"],
+      "js": ["inline/lobby.js"],
+      "css": ["inline/jankteki.css"],
       "run_at": "document_end"
     }
   ],
