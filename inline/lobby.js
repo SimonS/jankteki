@@ -28,6 +28,13 @@ var observer = new MutationObserver(function() {
 
             pinned.appendChild(li);
         });
+
+        if (onlineFriends.length === 0) {
+            var li = document.createElement('li');
+            li.innerHTML = 'Nobody is playing.<br />◉︵◉';
+
+            pinned.appendChild(li);
+        }
     });
 });
 
