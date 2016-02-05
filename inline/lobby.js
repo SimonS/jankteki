@@ -1,5 +1,5 @@
-var shitList = [];  // get shitList
-var friends = ['Draz', 'cursor', 'robotgoblin', 'wizard']; // get friends
+var shitList = [];
+var friends = [];
 
 var observer = new MutationObserver(function() {
     getAllPlayers()
@@ -60,5 +60,3 @@ function getOrCreatePinned () {
 
     return pinnedArea;
 }
-
-chrome.runtime.sendMessage({action: "show"});
