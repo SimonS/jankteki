@@ -6,35 +6,42 @@ var observer = new MutationObserver(function() {
         .filter((player) => shitList.indexOf(player.innerText) !== -1)
         .forEach((player) => player.classList.add('shit-list')); // this doesn't quite work atm
 
-    var pinned = getOrCreatePinned();
-    pinned.innerHTML = '';
+    var oldFriends = [];
 
     chrome.storage.sync.get(['friends'], function (items) {
+        var pinned = getOrCreatePinned();
         var friends = items.friends || [],
             onlineFriends = getAllPlayers()
                 .filter((player) => friends.indexOf(player.innerText) !== -1);
 
-        onlineFriends.forEach(function (player, i) {
-            var target = 'friend-' + i;
+        if (JSON.stringify(onlineFriends) !== JSON.stringify(oldFriends)) {
+            pinned.innerHTML = '';
 
-            Array.from(document.querySelectorAll('#' + target))
-                .forEach((existing) => existing.id = '');
+            onlineFriends.forEach(function (player, i) {
+                var target = 'friend-' + i;
 
-            var gameLine = player.closest('.gameline');
-            gameLine.id = target;
+                Array.from(document.querySelectorAll('#' + target))
+                    .forEach((existing) => existing.id = '');
 
-            var li = document.createElement('li');
-            li.innerHTML = '<a href="#' + target + '">' + player.innerText + '</a>';
+                var gameLine = player.closest('.gameline');
+                gameLine.id = target;
 
-            pinned.appendChild(li);
-        });
+                var li = document.createElement('li');
+                li.innerHTML = '<a href="#' + target + '">' + player.innerText + '</a>';
+
+                pinned.appendChild(li);
+            });
+        }
 
         if (onlineFriends.length === 0) {
+            pinned.innerHTML = '';
             var li = document.createElement('li');
             li.innerHTML = 'Nobody is playing.<br />◉︵◉';
 
             pinned.appendChild(li);
         }
+
+        oldFriends = onlineFriends;
     });
 });
 
