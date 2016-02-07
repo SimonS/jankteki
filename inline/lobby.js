@@ -5,9 +5,10 @@ var observer = new MutationObserver(function() {
         chrome.storage.sync.get(['friends'], function (items) {
             var pinned = getOrCreatePinned();
             var friends = items.friends || [];
-			var lowercaseFriends = friends.map(function(value) { return value.toLowerCase(); });
+			var lowercaseFriends = friends.map((friend) => friend.toLowerCase());
             var onlineFriends = getAllPlayers()
-                    .filter((player) => lowercaseFriends.indexOf(player.innerText.toLowerCase()) !== -1);
+                    .filter((player) =>
+                        lowercaseFriends.indexOf(player.innerText.toLowerCase()) !== -1);
 
             pinned.innerHTML = '';
             Array.from(document.querySelectorAll('.gameline'))
