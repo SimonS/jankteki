@@ -3,7 +3,7 @@
 
   "name": "Jankteki",
   "description": "An enhancement suite for jinteki.net",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "icons": {
     "16": "icons/icon16.png",
     "48": "icons/icon48.png",
@@ -25,7 +25,7 @@
   "content_scripts": [
     {
       "matches": [
-        "http://www.jinteki.net/play"
+        "http://www.jinteki.net/*"
       ],
       "js": ["inline/lobby.js"],
       "css": ["inline/jankteki.css"],
