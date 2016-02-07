@@ -13,11 +13,11 @@ var observer = new MutationObserver(function() {
             if (JSON.stringify(onlineFriends) !== JSON.stringify(oldFriends)) {
                 pinned.innerHTML = '';
 
+                Array.from(document.querySelectorAll('.gameline'))
+                    .forEach((game) => game.id = '');
+
                 onlineFriends.forEach(function (player, i) {
                     var target = 'friend-' + i;
-
-                    Array.from(document.querySelectorAll('#' + target))
-                        .forEach((existing) => existing.id = '');
 
                     var gameLine = player.closest('.gameline');
                     gameLine.id = target;
