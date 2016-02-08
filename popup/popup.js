@@ -32,11 +32,13 @@ function refreshFriendsList() {
                 newItem = document.getElementById('new-item'),
                 li = document.createElement('li'),
                 removeButton = document.createElement('button');
+                friendSpan = document.createElement('span');
 
             removeButton.innerHTML = 'remove';
             removeButton.classList.add('remove-btn');
 
-            li.innerHTML = friend;
+            friendSpan.innerHTML = friend;
+            li.appendChild(friendSpan);
             li.classList.add('friend');
             li.dataset.index = i;
             li.appendChild(removeButton);
