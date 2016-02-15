@@ -21,3 +21,11 @@
 .friends-title {
     margin-top: 10px;
 }
+
+#gameboard .gameboard .secondary-pane {
+    justify-content: flex-end;
+}
+
+.gameboard .secondary-pane > div {
+    margin-top: 5px;
+}
