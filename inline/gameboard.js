@@ -1,17 +1,34 @@
-// put command panel in middle panel
-
+var socket = io.connect(iourl + '/lobby');
 
 var observer = new MutationObserver(function () {
     if (document.querySelector('#gameboard').style.display !== "none") {
         createFixesPanel();
+
+        var fixesPanel = document.querySelector('#fixes-pane .panel'),
+            closeBtn = document.createElement('button');
+
+        closeBtn.innerHTML = 'Close Prompt';
+
+        fixesPanel.appendChild(closeBtn);
+
+        closeBtn.addEventListener('click', function () {
+            socket.emit("netrunner", {
+                "action": "do",
+                "gameid": localStorage['gameid'],
+                "command": "say",
+                "args": {
+                    "user": user, "text": "Close Prompt"
+                }
+            });
+        });
+
+        // close button: close-prompt
+        //      send command /close-prompt
     }
 });
 
 var gameBoard = document.querySelector('#gameboard');
 observer.observe(gameBoard, {childList: true});
-
-// use websockets to post commands: socket = io.connect(iourl + '/lobby')
-// to post chat: socket.emit("netrunner", {"action":"do","gameid":localStorage['gameid'],"command":"say","args":{"user":user,"text":"deck 3"}})
 
 function createFixesPanel() {
     if (!document.getElementById('fixes-pane')) {

@@ -27,12 +27,12 @@
       "matches": [
         "http://www.jinteki.net/*"
       ],
-      "js": ["inline/lobby.js", "inline/gameboard.js"],
+      "js": ["inline/lobby.js", "inline/injector.js"],
       "css": ["inline/jankteki.css"],
       "run_at": "document_end"
     }
   ],
-
+  "web_accessible_resources": ["inline/gameboard.js"],
   "permissions": [
     "contextMenus",
     "declarativeContent",

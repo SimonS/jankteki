@@ -29,3 +29,15 @@
 .gameboard .secondary-pane > div {
     margin-top: 5px;
 }
+
+.gameboard #fixes-pane h4 {
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.gameboard #fixes-pane button {
+    width: 100%;
+    font-size: 11px;
+    margin: 0 0 5px 0;
+    padding: 0 8px 1px;
+}
