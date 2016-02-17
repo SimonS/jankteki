@@ -30,6 +30,11 @@
     margin-top: 5px;
 }
 
+.gameboard #fixes-pane .panel {
+    max-height: 200px;
+    overflow: scroll;
+}
+
 .gameboard #fixes-pane h4 {
     margin-bottom: 10px;
     text-align: center;
@@ -40,4 +45,12 @@
     font-size: 11px;
     margin: 0 0 5px 0;
     padding: 0 8px 1px;
+}
+
+#fixes-pane.corp button.runner {
+    display: none;
+}
+
+#fixes-pane.runner button.corp {
+    display: none;
 }
