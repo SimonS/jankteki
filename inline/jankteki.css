@@ -22,16 +22,11 @@
     margin-top: 10px;
 }
 
-#gameboard .gameboard .secondary-pane {
-    justify-content: flex-end;
-}
-
 .gameboard .secondary-pane > div {
     margin-top: 5px;
 }
 
 .gameboard #fixes-pane .panel {
-    max-height: 200px;
     overflow: scroll;
 }
 
@@ -41,10 +36,33 @@
 }
 
 .gameboard #fixes-pane button {
-    width: 100%;
     font-size: 11px;
     margin: 0 0 5px 0;
     padding: 0 8px 1px;
+    width: 100%;
+}
+
+#fixes-pane .panel {
+    height: 28px;
+    margin-top: 5px;
+    transition: height 0.8s;
+}
+
+#fixes-pane .panel.expanded {
+    height: 150px;
+}
+
+#fixes-pane .panel h4 {
+    cursor: pointer;
+}
+
+#fixes-pane .panel h4 span::before {
+    color: #fff;
+    content: "▸ ";
+}
+
+#fixes-pane .panel.expanded h4 span::before {
+    content: "▾ ";
 }
 
 #fixes-pane.corp button.runner {

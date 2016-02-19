@@ -50,7 +50,20 @@ function createFixesPanel () {
         var secondaryPane = document.querySelector('.secondary-pane'),
             buttonPane = document.querySelector('.button-pane');
 
-        secondaryPane.insertBefore(fixes, buttonPane);
+        var buttonWrap = document.createElement('div');
+        buttonWrap.id = 'button-wrap';
+
+        buttonWrap.appendChild(fixes);
+
+        buttonWrap.insertBefore(buttonPane, fixes);
+
+        secondaryPane.appendChild(buttonWrap);
+
+        var expander = document.querySelector('#fixes-pane h4');
+        var panel = document.querySelector('#fixes-pane .panel');
+
+        expander.addEventListener('click',
+            () => panel.classList.toggle('expanded'));
     }
 }
 
