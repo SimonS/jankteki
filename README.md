@@ -1,7 +1,9 @@
-I hope one day this will be a useful jinteki.net extension.
+This is an extension for the jinteki.net website.
 
-Currently it maintains a list of friends (or cyber-celebrities ;-) ) online and pins links to their running games to the top of the screen.
+Features:
 
-Once I've got a couple of dummy icons, and made it look less crap, I shall be releasing this in the Chrome App Store.
+* maintains a list of friends (or cyber-celebrities ;-) ) online
+* pins links to friends games in progress to the top of the lobby.
+* introduces a fixes panel in-game. This panel serves as a series of shortcuts for the jinteki.net [commands list](http://www.jinteki.net/help#commands).
 
 [Trello Board for Janteki](https://trello.com/b/sJSYgy2m/jankteki)
