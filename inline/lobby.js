@@ -1,6 +1,6 @@
 var friends = [];
 
-var observer = new MutationObserver(function() {
+var observer = new MutationObserver(function () {
     if (document.querySelector('#gamelobby').style.display !== "none") {
         chrome.storage.sync.get(['friends'], function (items) {
             var pinned = getOrCreatePinned();
