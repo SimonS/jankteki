@@ -26,6 +26,10 @@
     overflow: scroll;
 }
 
+#fixes-pane .panel::-webkit-scrollbar {
+    display: none;
+}
+
 .gameboard #fixes-pane h4 {
     margin-bottom: 10px;
     text-align: center;
