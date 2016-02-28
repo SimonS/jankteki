@@ -23,11 +23,11 @@
 }
 
 .gameboard #fixes-pane .panel {
-    overflow: scroll;
+    overflow: hidden;
 }
 
-#fixes-pane .panel::-webkit-scrollbar {
-    display: none;
+.gameboard #fixes-pane .panel.expanded {
+    overflow-y: scroll;
 }
 
 .gameboard #fixes-pane h4 {
