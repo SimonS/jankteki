@@ -72,3 +72,8 @@
 #fixes-pane.runner button.corp {
     display: none;
 }
+
+/* TODO: add this under options panel */
+.gameboard {
+    overflow-x: auto;
+}
