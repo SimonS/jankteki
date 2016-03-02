@@ -73,7 +73,6 @@
     display: none;
 }
 
-/* TODO: add this under options panel */
-.gameboard {
+.horizontal-scrolling .gameboard {
     overflow-x: auto;
 }

@@ -27,7 +27,7 @@
       "matches": [
         "http://www.jinteki.net/*"
       ],
-      "js": ["inline/lobby.js", "inline/injector.js"],
+      "js": ["inline/lobby.js", "inline/injector.js", "inline/options.js"],
       "css": ["inline/jankteki.css"],
       "run_at": "document_end"
     }

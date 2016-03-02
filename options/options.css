@@ -3,7 +3,6 @@
     font-style: normal;
     font-weight: 200;
     src: url("../fonts/TitilliumWeb-ExtraLight.woff") format('woff');
-    src: url("../fonts/TitilliumWeb-ExtraLight.ttf") format('truetype');
 }
 
 @font-face {
@@ -11,7 +10,6 @@
     font-style: normal;
     font-weight: 300;
     src: url("../fonts/TitilliumWeb-Light.woff") format('woff');
-    src: url("../fonts/TitilliumWeb-Light.ttf") format('truetype');
 }
 
 @font-face {
@@ -19,7 +17,6 @@
     font-style: normal;
     font-weight: 400;
     src: url("../fonts/TitilliumWeb-Regular.woff") format('woff');
-    src: url("../fonts/TitilliumWeb-Regular.ttf") format('truetype');
 }
 
 @font-face {
