@@ -72,3 +72,7 @@
 #fixes-pane.runner button.corp {
     display: none;
 }
+
+.horizontal-scrolling .gameboard {
+    overflow-x: auto;
+}
