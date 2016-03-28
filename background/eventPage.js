@@ -19,9 +19,8 @@ chrome.contextMenus.create({
 
 chrome.contextMenus.onClicked.addListener(function(info) {
     if (info.menuItemId === "addFriendContext") {
-        chrome.storage.sync.get(['friends'], function (items) {
-            var newFriend = info.selectionText,
-                friends = items.friends || [];
+        loadFriends().then(function (friends) {
+            var newFriend = info.selectionText;
 
             if (newFriend.trim() !== '') {
                 friends.push(newFriend);

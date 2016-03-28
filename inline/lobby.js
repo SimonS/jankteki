@@ -42,30 +42,13 @@ function getAllPlayers () {
     );
 }
 
-function loadFriends () {
-    return new Promise(function (resolve, reject) {
-        // TODO - don't query storage on every mutate. Cache internally?
-        chrome.storage.sync.get(['friends'], function (items) {
-            if (chrome.runtime.lastError) {
-                return reject(chrome.runtime.lastError);
-            }
-
-            var friends = (items.friends || []).map(
-                friend => friend instanceof User ?
-                friend :
-                new User(friend));
-
-            resolve(friends);
-        });
-    });
-}
-
 function getOrCreatePinned () {
     var pinnedArea = document.getElementById('pinnedArea');
 
     if (pinnedArea) {
         return pinnedArea;
     }
+
     var pinnedContainer = document.createElement('div');
     pinnedContainer.className = 'pinned-container';
 

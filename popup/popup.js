@@ -4,9 +4,8 @@ document.addEventListener("DOMContentLoaded", function () {
     var addFriend = document.getElementById('add-friend');
 
     addFriend.addEventListener('click', function () {
-        chrome.storage.sync.get(['friends'], function (items) {
-            var newFriend = document.getElementById('new-friend').value,
-                friends = items.friends || [];
+        loadFriends().then(function (friends) {
+            var newFriend = document.getElementById('new-friend').value;
 
             if (newFriend.trim() !== '') {
                 friends.push(newFriend);
@@ -24,9 +23,7 @@ function refreshFriendsList() {
         el.parentNode.removeChild(el);
     });
 
-    chrome.storage.sync.get(['friends'], function (items) {
-        var friends = items.friends || [];
-
+    loadFriends().then(function (friends) {
         friends.forEach(function (friend, i) {
             var friendsList = document.getElementById('friends-list'),
                 newItem = document.getElementById('new-item'),
@@ -37,7 +34,7 @@ function refreshFriendsList() {
             removeButton.innerHTML = 'remove';
             removeButton.classList.add('remove-btn');
 
-            friendSpan.innerHTML = friend;
+            friendSpan.innerHTML = friend.name;
             li.appendChild(friendSpan);
             li.classList.add('friend');
             li.dataset.index = i;
@@ -49,7 +46,6 @@ function refreshFriendsList() {
         Array.from(document.querySelectorAll('.friend .remove-btn')).forEach(function (friend) {
             friend.addEventListener('click', function (e) {
                 var index = e.target.closest('.friend').dataset.index;
-
                 friends.splice(index, 1);
                 chrome.storage.sync.set({'friends': friends}, refreshFriendsList);
             })
