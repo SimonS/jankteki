@@ -19,24 +19,6 @@ chrome.contextMenus.create({
 
 chrome.contextMenus.onClicked.addListener(function(info) {
     if (info.menuItemId === "addFriendContext") {
-        loadFriends().then(function (friends) {
-            var newFriend = info.selectionText;
-
-            if (newFriend.trim() !== '') {
-                friends.push(newFriend);
-                chrome.storage.sync.set({'friends': friends}, function () {
-                    var notificationOption = {
-                        type: 'basic',
-                        title: 'Friend added',
-                        message: newFriend + ' added as a friend',
-                        iconUrl: 'icons/icon128.png'
-                    };
-
-                    chrome.notifications.create(
-                        'friendAdded', notificationOption, function () {}
-                    );
-                });
-            }
-        });
+        addFriend(info.selectionText);
     }
 });

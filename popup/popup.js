@@ -1,19 +1,12 @@
 document.addEventListener("DOMContentLoaded", function () {
     refreshFriendsList();
 
-    var addFriend = document.getElementById('add-friend');
+    var addFriendElement = document.getElementById('add-friend');
 
-    addFriend.addEventListener('click', function () {
-        loadFriends().then(function (friends) {
-            var newFriend = document.getElementById('new-friend').value;
-
-            if (newFriend.trim() !== '') {
-                friends.push(newFriend);
-                chrome.storage.sync.set({'friends': friends}, refreshFriendsList);
-            }
-        });
+    addFriendElement.addEventListener('click', function () {
+        addFriend(document.getElementById('new-friend').value)
+            .then(refreshFriendsList);
     });
-
 });
 
 function refreshFriendsList() {
