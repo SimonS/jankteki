@@ -1,18 +1,15 @@
-var friends = [];
-
 var observer = new MutationObserver(function () {
     if (document.querySelector('#gamelobby').style.display !== "none") {
-        chrome.storage.sync.get(['friends'], function (items) {
-            var pinned = getOrCreatePinned();
-            var friends = items.friends || [];
-			var lowercaseFriends = friends.map((friend) => friend.toLowerCase());
+        var pinned = getOrCreatePinned();
+
+        loadFriends().then(function (friends) {
+			var friendNames = friends.map(friend => friend.name.toLowerCase());
             var onlineFriends = getAllPlayers()
-                    .filter((player) =>
-                        lowercaseFriends.indexOf(player.innerText.toLowerCase()) !== -1);
+                .filter(player => friendNames.indexOf(player.innerText.toLowerCase()) !== -1);
 
             pinned.innerHTML = '';
             Array.from(document.querySelectorAll('.gameline'))
-                .forEach((game) => game.id = '');
+                .forEach(game => game.id = '');
 
             onlineFriends.forEach(function (player, i) {
                 var target = 'friend-' + i;
@@ -43,6 +40,24 @@ function getAllPlayers () {
     return Array.from(
         document.querySelectorAll('.player span:not(.side)')
     );
+}
+
+function loadFriends () {
+    return new Promise(function (resolve, reject) {
+        // TODO - don't query storage on every mutate. Cache internally?
+        chrome.storage.sync.get(['friends'], function (items) {
+            if (chrome.runtime.lastError) {
+                return reject(chrome.runtime.lastError);
+            }
+
+            var friends = (items.friends || []).map(
+                friend => friend instanceof User ?
+                friend :
+                new User(friend));
+
+            resolve(friends);
+        });
+    });
 }
 
 function getOrCreatePinned () {
