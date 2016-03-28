@@ -17,7 +17,7 @@ function refreshFriendsList() {
     });
 
     loadFriends().then(function (friends) {
-        friends.forEach(function (friend, i) {
+        friends.forEach(function (friend) {
             var friendsList = document.getElementById('friends-list'),
                 newItem = document.getElementById('new-item'),
                 li = document.createElement('li'),
@@ -26,11 +26,12 @@ function refreshFriendsList() {
 
             removeButton.innerHTML = 'remove';
             removeButton.classList.add('remove-btn');
+            removeButton.dataset.forUser = friend;
 
-            friendSpan.innerHTML = friend.name;
+            friendSpan.innerHTML = friend;
             li.appendChild(friendSpan);
             li.classList.add('friend');
-            li.dataset.index = i;
+
             li.appendChild(removeButton);
 
             friendsList.insertBefore(li, newItem);
@@ -38,9 +39,7 @@ function refreshFriendsList() {
 
         Array.from(document.querySelectorAll('.friend .remove-btn')).forEach(function (friend) {
             friend.addEventListener('click', function (e) {
-                var index = e.target.closest('.friend').dataset.index;
-                friends.splice(index, 1);
-                chrome.storage.sync.set({'friends': friends}, refreshFriendsList);
+                removeFriend(e.target.dataset.forUser).then(refreshFriendsList);
             })
         });
     });

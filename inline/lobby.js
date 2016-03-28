@@ -3,7 +3,7 @@ var observer = new MutationObserver(function () {
         var pinned = getOrCreatePinned();
 
         loadFriends().then(function (friends) {
-			var friendNames = friends.map(friend => friend.name.toLowerCase());
+			var friendNames = Array.from(friends).map(friend => friend.toLowerCase());
             var onlineFriends = getAllPlayers()
                 .filter(player => friendNames.indexOf(player.innerText.toLowerCase()) !== -1);
 
