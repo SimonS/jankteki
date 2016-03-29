@@ -30,6 +30,13 @@ var observer = new MutationObserver(function () {
                 pinned.appendChild(li);
             }
         });
+
+        var userClass = 'jankteki-user';
+        Array.from(document.querySelectorAll(`.${userClass}`)).forEach(user => user.classList.remove(userClass));
+
+        var users = document.querySelectorAll('.player > .avatar + span');
+        Array.from(users).forEach(user => user.classList.add(userClass));
+        console.log(users);
     }
 });
 

@@ -76,3 +76,13 @@
 .horizontal-scrolling .gameboard {
     overflow-x: auto;
 }
+
+.jankteki-user {
+    border-bottom: #ffa500 1px solid;
+    cursor: pointer;
+    display: inline-block;
+    line-height: 1;
+    padding-bottom: 1px;
+}
+
+/* TODO - on hover, display first line of notes. on click take to user profile page */
