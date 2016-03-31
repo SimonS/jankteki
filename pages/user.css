@@ -1,0 +1,75 @@
+@font-face {
+    font-family: 'Titillium Web';
+    font-style: normal;
+    font-weight: 200;
+    src: url("../fonts/TitilliumWeb-ExtraLight.woff") format('woff');
+}
+
+@font-face {
+    font-family: 'Titillium Web';
+    font-style: normal;
+    font-weight: 300;
+    src: url("../fonts/TitilliumWeb-Light.woff") format('woff');
+}
+
+@font-face {
+    font-family: 'Titillium Web';
+    font-style: normal;
+    font-weight: 400;
+    src: url("../fonts/TitilliumWeb-Regular.woff") format('woff');
+}
+
+@font-face {
+    font-family: 'Titillium Web';
+    font-style: normal;
+    font-weight: 700;
+    src: url("../fonts/TitilliumWeb-Bold.woff") format('woff');
+}
+
+.user label {
+    display: block;
+    margin-bottom: 16px;
+}
+
+
+body {
+    background-color: #000;
+    color: #fff;
+    font-family: "Titillium Web", "Helvetica Neue", sans-serif;
+    width: 400px;
+}
+
+h1 {
+    margin: 0 0 12px 0;
+}
+
+.user {
+    border: 1px solid rgba(39,56,76,0.9);
+    border-radius: 4px;
+    margin: 5px;
+    padding: 5px 10px;
+
+    background-color: rgba(39,56,76,1);
+    box-shadow: 0 0 12px rgba(0,0,0,0.4), inset 0 0 0 1px rgba(255,255,255,0.1);
+    color: #fff;
+}
+
+.button {
+    background-color: rgba(255,165,0,0.35);
+    border: 1px solid #ffa500;
+    border-radius: 4px;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 12px;
+    height: 28px;
+    margin-bottom: 8px;
+    outline: none;
+    padding: 4px 12px;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.9);
+    transition: all 0.2s ease-in-out;
+}
+
+textarea {
+    display: block;
+}
