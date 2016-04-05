@@ -31,12 +31,20 @@ var observer = new MutationObserver(function () {
             }
         });
 
+        // This obviously needs cleaning up, but it's step one in our
+        // front end user code
         var userClass = 'jankteki-user';
         Array.from(document.querySelectorAll(`.${userClass}`)).forEach(user => user.classList.remove(userClass));
 
-        var users = document.querySelectorAll('.player > .avatar + span');
-        Array.from(users).forEach(user => user.classList.add(userClass));
-        console.log(users);
+        var users = Array.from(document.querySelectorAll('.player > .avatar + span'));
+        users.forEach(user => user.classList.add(userClass));
+        users.forEach(user => user.dataset.username =`jankteki-${user.innerHTML}`);
+
+        var usernames = users.map(u => `jankteki-${u.innerHTML}`);
+
+        chrome.storage.sync.get(usernames, function (storedUsers) {
+            Object.keys(storedUsers).forEach(u => document.querySelector(`span[data-username=${u}]`).classList.add('known-user'));
+        })
     }
 });
 

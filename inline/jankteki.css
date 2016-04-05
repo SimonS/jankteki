@@ -77,7 +77,7 @@
     overflow-x: auto;
 }
 
-.jankteki-user {
+.jankteki-user.known-user {
     border-bottom: #ffa500 1px solid;
     cursor: pointer;
     display: inline-block;
