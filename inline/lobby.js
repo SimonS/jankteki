@@ -34,7 +34,7 @@ var observer = new MutationObserver(function () {
         // This obviously needs cleaning up, but it's step one in our
         // front end user code
         var userClass = 'jankteki-user';
-        Array.from(document.querySelectorAll(`.${userClass}`)).forEach(user => user.classList.remove(userClass));
+        Array.from(document.querySelectorAll(`.${userClass}`)).forEach(user => user.classList.remove(userClass, 'known-user'));
 
         var users = Array.from(document.querySelectorAll('.player > .avatar + span'));
         users.forEach(user => user.classList.add(userClass));
