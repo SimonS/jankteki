@@ -31,20 +31,29 @@ var observer = new MutationObserver(function () {
             }
         });
 
-        // This obviously needs cleaning up, but it's step one in our
-        // front end user code
+        // hover link for short note, click to go to full user page
         var userClass = 'jankteki-user';
-        Array.from(document.querySelectorAll(`.${userClass}`)).forEach(user => user.classList.remove(userClass, 'known-user'));
+        Array.from(document.querySelectorAll(`.${userClass}`)).forEach(function (user) {
+            user.classList.remove(userClass, 'known-user');
+            user.dataset.notes = '';
+        });
 
         var users = Array.from(document.querySelectorAll('.player > .avatar + span'));
-        users.forEach(user => user.classList.add(userClass));
+        users.forEach(function (user) {
+            user.classList.add(userClass);
+            user.dataset.username =`jankteki-${user.innerHTML}`
+        });
         users.forEach(user => user.dataset.username =`jankteki-${user.innerHTML}`);
 
         var usernames = users.map(u => `jankteki-${u.innerHTML}`);
 
         chrome.storage.sync.get(usernames, function (storedUsers) {
-            Object.keys(storedUsers).forEach(u => document.querySelector(`span[data-username=${u}]`).classList.add('known-user'));
-        })
+            Object.keys(storedUsers).forEach(function (u) {
+                var userEl = document.querySelector(`span[data-username =${u}]`);
+                userEl.classList.add('known-user');
+                userEl.dataset.notes = storedUsers[u].notes;
+            });
+        });
     }
 });
 
