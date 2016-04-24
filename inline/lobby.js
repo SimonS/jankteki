@@ -49,9 +49,12 @@ var observer = new MutationObserver(function () {
 
         chrome.storage.sync.get(usernames, function (storedUsers) {
             Object.keys(storedUsers).forEach(function (u) {
-                var userEl = document.querySelector(`span[data-username =${u}]`);
+                storedUsers[u].name = u;
+                var userObject = new User(storedUsers[u]);
+
+                var userEl = document.querySelector(`span[data-username=${u}]`);
                 userEl.classList.add('known-user');
-                userEl.dataset.notes = storedUsers[u].notes;
+                userEl.dataset.notes = userObject.summary;
             });
         });
     }
