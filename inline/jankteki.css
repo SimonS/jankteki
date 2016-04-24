@@ -96,7 +96,6 @@
     top: -34px;
     width: 150px;
 
-    // overlay
     background-color: rgba(39,56,76,1);
     border: 1px solid rgba(39,56,76,0.9);
     border-radius: 4px;
@@ -112,4 +111,4 @@
     display: block;
 }
 
-/* TODO - on hover, display ONLY first line of notes. on click take to user profile page */
+/* TODO - on click take to user profile page */

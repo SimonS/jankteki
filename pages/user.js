@@ -15,8 +15,11 @@ chrome.storage.sync.get(['jankteki-' + userId], function (items) {
 document.getElementById('user').addEventListener('submit', function (e) {
     e.preventDefault();
 
-    var user = {};
-    user['jankteki-' + userId] = {
+    var user = {},
+        key = 'jankteki-' + userId;
+    user[key] = {
+        key: key,
+        name: userId,
         notes: document.getElementById('jankteki-notes').value
     };
 
