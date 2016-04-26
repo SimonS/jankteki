@@ -22,3 +22,9 @@ chrome.contextMenus.onClicked.addListener(function(info) {
         addFriend(info.selectionText);
     }
 });
+
+chrome.runtime.onMessage.addListener(function(request) {
+    if (request.action == "user-page") {
+        chrome.tabs.create({url: "pages/user.html?user=" + request.user});
+    }
+});

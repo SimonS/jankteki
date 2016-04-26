@@ -41,7 +41,7 @@ var observer = new MutationObserver(function () {
         var users = Array.from(document.querySelectorAll('.player > .avatar + span'));
         users.forEach(function (user) {
             user.classList.add(userClass);
-            user.dataset.username =`jankteki-${user.innerHTML}`
+            user.dataset.username = `jankteki-${user.innerHTML}`;
         });
         users.forEach(user => user.dataset.username =`jankteki-${user.innerHTML}`);
 
@@ -57,6 +57,12 @@ var observer = new MutationObserver(function () {
                 userEl.dataset.notes = userObject.summary;
             });
         });
+    }
+});
+
+document.querySelector('.lobby').addEventListener('click', function(e) {
+    if (e.target.classList.contains('known-user')) {
+        chrome.runtime.sendMessage({action: 'user-page', user: e.target.textContent});
     }
 });
 

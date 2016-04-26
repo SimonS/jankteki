@@ -17,6 +17,7 @@ document.getElementById('user').addEventListener('submit', function (e) {
 
     var user = {},
         key = 'jankteki-' + userId;
+
     user[key] = {
         key: key,
         name: userId,
