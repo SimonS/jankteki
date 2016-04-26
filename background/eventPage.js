@@ -17,27 +17,27 @@ chrome.contextMenus.create({
     id: "addFriendContext"
 });
 
+chrome.contextMenus.create({
+    title: "User profile: %s",
+    contexts:["selection"],
+    id: "seeUserContext"
+});
+
 chrome.contextMenus.onClicked.addListener(function(info) {
     if (info.menuItemId === "addFriendContext") {
-        chrome.storage.sync.get(['friends'], function (items) {
-            var newFriend = info.selectionText,
-                friends = items.friends || [];
-
-            if (newFriend.trim() !== '') {
-                friends.push(newFriend);
-                chrome.storage.sync.set({'friends': friends}, function () {
-                    var notificationOption = {
-                        type: 'basic',
-                        title: 'Friend added',
-                        message: newFriend + ' added as a friend',
-                        iconUrl: 'icons/icon128.png'
-                    };
-
-                    chrome.notifications.create(
-                        'friendAdded', notificationOption, function () {}
-                    );
-                });
-            }
-        });
+        addFriend(info.selectionText);
+    }
+    if (info.menuItemId === "seeUserContext") {
+        goToUser(info.selectionText);
     }
 });
+
+chrome.runtime.onMessage.addListener(function(request) {
+    if (request.action == "user-page") {
+        goToUser(request.user);
+    }
+});
+
+function goToUser(user) {
+    chrome.tabs.create({url: "pages/user.html?user=" + user});
+}

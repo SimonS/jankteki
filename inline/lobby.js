@@ -1,18 +1,15 @@
-var friends = [];
-
 var observer = new MutationObserver(function () {
     if (document.querySelector('#gamelobby').style.display !== "none") {
-        chrome.storage.sync.get(['friends'], function (items) {
-            var pinned = getOrCreatePinned();
-            var friends = items.friends || [];
-			var lowercaseFriends = friends.map((friend) => friend.toLowerCase());
+        var pinned = getOrCreatePinned();
+
+        loadFriends().then(function (friends) {
+			var friendNames = Array.from(friends).map(friend => friend.toLowerCase());
             var onlineFriends = getAllPlayers()
-                    .filter((player) =>
-                        lowercaseFriends.indexOf(player.innerText.toLowerCase()) !== -1);
+                .filter(player => friendNames.indexOf(player.innerText.toLowerCase()) !== -1);
 
             pinned.innerHTML = '';
             Array.from(document.querySelectorAll('.gameline'))
-                .forEach((game) => game.id = '');
+                .forEach(game => game.id = '');
 
             onlineFriends.forEach(function (player, i) {
                 var target = 'friend-' + i;
@@ -33,6 +30,39 @@ var observer = new MutationObserver(function () {
                 pinned.appendChild(li);
             }
         });
+
+        // hover link for short note, click to go to full user page
+        var userClass = 'jankteki-user';
+        Array.from(document.querySelectorAll(`.${userClass}`)).forEach(function (user) {
+            user.classList.remove(userClass, 'known-user');
+            user.dataset.notes = '';
+        });
+
+        var users = Array.from(document.querySelectorAll('.player > .avatar + span'));
+        users.forEach(function (user) {
+            user.classList.add(userClass);
+            user.dataset.username = `jankteki-${user.innerHTML}`;
+        });
+        users.forEach(user => user.dataset.username =`jankteki-${user.innerHTML}`);
+
+        var usernames = users.map(u => `jankteki-${u.innerHTML}`);
+
+        chrome.storage.sync.get(usernames, function (storedUsers) {
+            Object.keys(storedUsers).forEach(function (u) {
+                storedUsers[u].name = u;
+                var userObject = new User(storedUsers[u]);
+
+                var userEl = document.querySelector(`span[data-username=${u}]`);
+                userEl.classList.add('known-user');
+                userEl.dataset.notes = userObject.summary;
+            });
+        });
+    }
+});
+
+document.querySelector('.lobby').addEventListener('click', function(e) {
+    if (e.target.classList.contains('known-user')) {
+        chrome.runtime.sendMessage({action: 'user-page', user: e.target.textContent});
     }
 });
 
@@ -51,6 +81,7 @@ function getOrCreatePinned () {
     if (pinnedArea) {
         return pinnedArea;
     }
+
     var pinnedContainer = document.createElement('div');
     pinnedContainer.className = 'pinned-container';
 
