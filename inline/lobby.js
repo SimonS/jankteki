@@ -55,6 +55,21 @@ var observer = new MutationObserver(function () {
                 var userEl = document.querySelector(`span[data-username=${u}]`);
                 userEl.classList.add('known-user');
                 userEl.dataset.notes = userObject.summary;
+                
+                if (userEl.closest('.gameline').id) {
+                    var id = userEl.closest('.gameline').id;
+                    console.log(id.match(/friend-(\d)/));
+                    match = id.match(/friend-(\d)/)[0];
+                    
+                    var friendLine = document.createElement('span');
+                    friendLine.innerHTML = ' - ' + userObject.summary;
+                    friendLine.classList.add('summary'); 
+                    
+                    var linkParent = document.querySelector(`a[href="#${match}"]`).parentElement;
+                    if (!linkParent.querySelector('.summary')) {
+                        linkParent.appendChild(friendLine);
+                    }
+                }
             });
         });
     }
