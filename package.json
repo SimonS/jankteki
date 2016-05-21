@@ -10,7 +10,8 @@
     "sinon-chrome": "^1.1.2"
   },
   "scripts": {
-    "test": "mocha test/**/*.spec.js"
+    "test": "mocha test/**/*.spec.js",
+    "build-extension": "zip -9 -r --exclude=*.git* --exclude=*node_modules* --exclude=*.DS_Store* --exclude=*.idea* -X build/jankteki.zip ."
   },
   "repository": {
     "type": "git",
