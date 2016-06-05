@@ -1,7 +1,7 @@
 chrome.storage.sync.get(['options'], function (items) {
     var options = items.options;
 
-    if (options.horizontalScrolling) {
+    if (options && options.horizontalScrolling) {
         document.getElementById('horizontal-scrolling')['checked'] = 'checked';
     }
 });
