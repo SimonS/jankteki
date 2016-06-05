@@ -3,7 +3,7 @@
 
   "name": "Jankteki",
   "description": "An enhancement suite for jinteki.net",
-  "version": "0.6.1",
+  "version": "0.6.2",
   "icons": {
     "16": "icons/icon16.png",
     "48": "icons/icon48.png",
