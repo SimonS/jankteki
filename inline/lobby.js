@@ -49,7 +49,6 @@ var observer = new MutationObserver(function () {
         var usernames = users.map(encodeUser);
 
         chrome.storage.sync.get(usernames, function (storedUsers) {
-            console.log(storedUsers)
             Object.keys(storedUsers).forEach(function (u) {
                 storedUsers[u].name = u;
                 var userObject = new User(storedUsers[u]);
