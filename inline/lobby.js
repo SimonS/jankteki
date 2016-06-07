@@ -38,33 +38,33 @@ var observer = new MutationObserver(function () {
             user.dataset.notes = '';
         });
 
+        var encodeUser = u => `jankteki-${encodeURI(u.innerHTML)}`;
+
         var users = Array.from(document.querySelectorAll('.player > .avatar + span'));
         users.forEach(function (user) {
             user.classList.add(userClass);
-            user.dataset.username = `jankteki-${user.innerHTML}`;
+            user.dataset.username = encodeUser(user);
         });
-        users.forEach(user => user.dataset.username =`jankteki-${user.innerHTML}`);
 
-        var usernames = users.map(u => `jankteki-${u.innerHTML}`);
+        var usernames = users.map(encodeUser);
 
         chrome.storage.sync.get(usernames, function (storedUsers) {
             Object.keys(storedUsers).forEach(function (u) {
                 storedUsers[u].name = u;
                 var userObject = new User(storedUsers[u]);
 
-                var userEl = document.querySelector(`span[data-username=${u}]`);
+                var userEl = document.querySelector(`span[data-username="${u}"]`);
                 userEl.classList.add('known-user');
                 userEl.dataset.notes = userObject.summary;
-                
+
                 if (userEl.closest('.gameline').id) {
                     var id = userEl.closest('.gameline').id;
-                    console.log(id.match(/friend-(\d)/));
                     match = id.match(/friend-(\d)/)[0];
-                    
+
                     var friendLine = document.createElement('span');
                     friendLine.innerHTML = ' - ' + userObject.summary;
-                    friendLine.classList.add('summary'); 
-                    
+                    friendLine.classList.add('summary');
+
                     var linkParent = document.querySelector(`a[href="#${match}"]`).parentElement;
                     if (!linkParent.querySelector('.summary')) {
                         linkParent.appendChild(friendLine);
