@@ -33,7 +33,9 @@ document.getElementById('user').addEventListener('submit', function (e) {
         };
 
         chrome.notifications.create(
-            'userSaved', notificationOption, function () {}
+            'userSaved', notificationOption, function () {
+                chrome.runtime.sendMessage({action: 'close-user'});
+            }
         );
     });
 
