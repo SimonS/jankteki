@@ -1,3 +1,5 @@
+var jintekiTab, userTab;
+
 chrome.runtime.onInstalled.addListener(function () {
     chrome.declarativeContent.onPageChanged.removeRules(undefined, function () {
         chrome.declarativeContent.onPageChanged.addRules([{
@@ -36,8 +38,24 @@ chrome.runtime.onMessage.addListener(function(request) {
     if (request.action == "user-page") {
         goToUser(request.user);
     }
+
+    if (request.action == "close-user") {
+        closeUser();
+    }
 });
 
 function goToUser(user) {
-    chrome.tabs.create({url: "pages/user.html?user=" + user});
+    chrome.tabs.getSelected(function (currentTab) {
+        jintekiTab = currentTab.id;
+
+        chrome.tabs.create({url: "pages/user.html?user=" + user}, function (tab) {
+            userTab = tab.id;
+        });
+    })
+}
+
+function closeUser() {
+    chrome.tabs.remove(userTab, function () {
+        chrome.tabs.update(jintekiTab, {active: true});
+    });
 }

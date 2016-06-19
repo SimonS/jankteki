@@ -1,6 +1,6 @@
 {
   "name": "jankteki",
-  "version": "0.6.3",
+  "version": "0.6.4",
   "description": "Chrome extension for Jinteki.net",
   "dependencies": {},
   "devDependencies": {
