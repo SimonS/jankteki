@@ -10,7 +10,6 @@ This version of Jankteki has generally only been tested against the latest versi
 * pins links to friends games in progress to the top of the lobby
 * keeps notes on players - both a one line summary, as well as deeper notepad
 * introduces a fixes panel in-game. This panel serves as a series of shortcuts for the jinteki.net [commands list](http://www.jinteki.net/help#commands)
-* ability to enable horizontal scrolling, for those evil asset spam decks
 
 ## Troubleshooting
 
