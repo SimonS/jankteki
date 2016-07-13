@@ -3,7 +3,7 @@
 
   "name": "Jankteki",
   "description": "An enhancement suite for jinteki.net",
-  "version": "0.6.3",
+  "version": "0.7.0",
   "icons": {
     "16": "icons/icon16.png",
     "48": "icons/icon48.png",
@@ -33,7 +33,7 @@
     }
   ],
   "options_page": "options/options.html",
-  "web_accessible_resources": ["inline/gameboard.js"],
+  "web_accessible_resources": ["inline/gameboard.js", "*.jpg", "*.JPG", "*.png", "*.PNG"],
   "permissions": [
     "contextMenus",
     "declarativeContent",

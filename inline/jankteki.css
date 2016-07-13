@@ -110,12 +110,3 @@
 .jankteki-user.known-user:hover::before {
     display: block;
 }
-
-div.lobby-bg,
-div.home-bg,
-div.deckbuilder-bg,
-div.cardbrowser-bg,
-div.help-bg,
-div.about-bg {
-    background-image: url('http://66.media.tumblr.com/5683d39ff7b81b67788755d7b5e7a8e8/tumblr_nj7ai8BxEU1sqwblpo1_1280.jpg');
-}
