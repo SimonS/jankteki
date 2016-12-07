@@ -21,6 +21,7 @@ var observer = new MutationObserver(function () {
             {text: 'Take net damage', command: 'take-net', prompt: 'How much net damage?', side: 'runner'},
             {text: 'Take brain damage', command: 'take-brain', prompt: 'How much brain damage?', side: 'runner'},
             {text: 'Discard card', command: 'discard', prompt: 'Which card?', which: true},
+            {text: 'Remove card from game', command: 'rfg'},
             {text: 'Put card on deck', command: 'deck', prompt: 'Which card?', which: true},
             {text: 'Initiate trace', command: 'trace', prompt: 'Base strength?', side: 'corp'},
             {text: 'Close active prompt', command: 'close-prompt'},
@@ -56,7 +57,7 @@ function createFixesPanel () {
         if (!(secondaryPane && buttonPane)) {
             return;
         }
-        
+
         var buttonWrap = document.createElement('div');
         buttonWrap.id = 'button-wrap';
 
