@@ -31,10 +31,11 @@ var observer = new MutationObserver(function () {
             {text: 'Advance card', command: 'adv-counter', 'prompt': 'How many counters?', side: 'corp'},
             {text: 'Debug card', command: 'card-info'}
         ];
-
-        buttons.forEach((btn) => fixesPanel.appendChild(
-            createFixButton(btn)
-        ));
+        if (fixesPanel) {
+            buttons.forEach((btn) => fixesPanel.appendChild(
+                createFixButton(btn)
+            ));
+        }
     }
 });
 
@@ -49,9 +50,13 @@ function createFixesPanel () {
         fixes.id = 'fixes-pane';
         fixes.innerHTML = '<div class="panel blue-shade"><h4><span>Fixes</span></h4></div>';
 
-        var secondaryPane = document.querySelector('.secondary-pane'),
+        var secondaryPane = document.querySelector('.right-inner-leftpane'),
             buttonPane = document.querySelector('.button-pane');
 
+        if (!(secondaryPane && buttonPane)) {
+            return;
+        }
+        
         var buttonWrap = document.createElement('div');
         buttonWrap.id = 'button-wrap';
 
