@@ -39,6 +39,8 @@
     "declarativeContent",
     "notifications",
     "storage",
-    "http://jinteki.net/*"
+    "http://jinteki.net/*",
+    "http://www.jinteki.net/*",
+    "https://jinteki.zaroth.net/"
   ]
 }
