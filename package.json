@@ -1,10 +1,11 @@
 {
   "name": "jankteki",
-  "version": "0.6.5",
+  "version": "0.7.0",
   "description": "Chrome extension for Jinteki.net",
   "dependencies": {},
   "devDependencies": {
     "chai": "^3.5.0",
+    "jsdom": "^9.9.1",
     "mocha": "^2.4.5",
     "sinon": "^1.17.4",
     "sinon-chrome": "^1.1.2"
