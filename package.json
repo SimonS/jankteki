@@ -7,13 +7,14 @@
     "chai": "^3.5.0",
     "jsdom": "^9.9.1",
     "mocha": "^2.4.5",
+    "nyc": "^10.1.2",
     "sinon": "^1.17.4",
     "sinon-chrome": "^1.1.2"
   },
   "scripts": {
     "test": "mocha test/**/*.spec.js",
     "build-extension": "zip -9 -r --exclude=*.git* --exclude=*node_modules* --exclude=*.DS_Store* --exclude=*.idea* -X build/jankteki.zip .",
-    "coverage": "istanbul cover node_modules/.bin/_mocha -- -u exports -R spec test/**/*.spec.js && open coverage/lcov-report/index.html"
+    "coverage": "nyc --all mocha test/**/*.spec.js"
   },
   "repository": {
     "type": "git",
