@@ -12,7 +12,8 @@
   },
   "scripts": {
     "test": "mocha test/**/*.spec.js",
-    "build-extension": "zip -9 -r --exclude=*.git* --exclude=*node_modules* --exclude=*.DS_Store* --exclude=*.idea* -X build/jankteki.zip ."
+    "build-extension": "zip -9 -r --exclude=*.git* --exclude=*node_modules* --exclude=*.DS_Store* --exclude=*.idea* -X build/jankteki.zip .",
+    "coverage": "istanbul cover node_modules/.bin/_mocha -- -u exports -R spec test/**/*.spec.js && open coverage/lcov-report/index.html"
   },
   "repository": {
     "type": "git",
