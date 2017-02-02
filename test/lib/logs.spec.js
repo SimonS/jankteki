@@ -36,14 +36,10 @@ describe('Logs', function () {
     });
 
     it('returns analysis of credits earned', function () {
-        expect(logs.analysis
-            .filter(log => log.name === 'player 1')[0]
-            .credits
-        ).to.deep.equal([5, 4, 8]);
-
-        expect(logs.analysis
-            .filter(log => log.name === 'player 2')[0]
-            .credits
-        ).to.deep.equal([5, 4]);
+        expect(logs.analysis.get('player 1').credits)
+            .to.deep.equal([5, 4, 8]);
+            
+        expect(logs.analysis.get('player 2').credits)
+            .to.deep.equal([5, 4]);
     });
 });
