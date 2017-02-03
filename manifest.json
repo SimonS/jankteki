@@ -3,7 +3,7 @@
 
   "name": "Jankteki",
   "description": "An enhancement suite for jinteki.net",
-  "version": "0.6.5",
+  "version": "0.7.0",
   "icons": {
     "16": "icons/icon16.png",
     "48": "icons/icon48.png",
@@ -27,13 +27,13 @@
       "matches": [
         "http://www.jinteki.net/*", "https://jinteki.zaroth.net/*"
       ],
-      "js": ["lib/models/User.js", "lib/friends.js", "lib/options.js", "inline/lobby.js", "inline/injector.js", "inline/options.js"],
+      "js": ["lib/models/User.js", "lib/logs.js", "lib/friends.js", "lib/options.js", "inline/lobby.js", "inline/injector.js", "inline/options.js"],
       "css": ["inline/jankteki.css"],
       "run_at": "document_end"
     }
   ],
   "options_page": "options/options.html",
-  "web_accessible_resources": ["inline/gameboard.js"],
+  "web_accessible_resources": ["inline/gameboard.js", "lib/logs.js"],
   "permissions": [
     "contextMenus",
     "declarativeContent",

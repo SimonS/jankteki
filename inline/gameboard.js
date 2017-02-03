@@ -5,38 +5,42 @@ var observer = new MutationObserver(function () {
         createFixesPanel();
 
         var fixesPanel = document.querySelector('#fixes-pane .panel');
-
-        var buttons = [
-            {text: 'Draw n cards', command: 'draw', prompt: 'How many to draw?'},
-            {text: 'Adjust credits', command: 'credit', prompt: 'How many credits?'},
-            {text: 'Adjust clicks', command: 'click', prompt: 'How many clicks?'},
-            {text: 'Adjust memory', command: 'memory', prompt: 'How much memory?', side: 'runner'},
-            {text: 'Adjust tags', command: 'tag', prompt: 'How many tags?', side: 'runner'},
-            {text: 'Adjust bad publicity', command: 'bp', prompt: 'How much bad publicity?', side: 'corp'},
-            {text: 'Adjust link', command: 'link', prompt: 'How much link?', side: 'runner'},
-            {text: 'Adjust hand size', command: 'handsize', prompt: 'What is your handsize?'},
-            {text: 'Rez card (ignoring all costs)', command: 'rez'},
-            {text: 'Rez all cards (ignoring all costs)', command: 'rez-all'},
-            {text: 'Take meat damage', command: 'take-meat', prompt: 'How much meat damage?', side: 'runner'},
-            {text: 'Take net damage', command: 'take-net', prompt: 'How much net damage?', side: 'runner'},
-            {text: 'Take brain damage', command: 'take-brain', prompt: 'How much brain damage?', side: 'runner'},
-            {text: 'Discard card', command: 'discard', prompt: 'Which card?', which: true},
-            {text: 'Remove card from game', command: 'rfg'},
-            {text: 'Put card on deck', command: 'deck', prompt: 'Which card?', which: true},
-            {text: 'Initiate trace', command: 'trace', prompt: 'Base strength?', side: 'corp'},
-            {text: 'Close active prompt', command: 'close-prompt'},
-            {text: 'Start a Psi game', command: 'psi', 'side': 'corp'},
-            {text: 'End a run', command: 'end-run', 'side': 'corp'},
-            {text: 'Jack out', command: 'jack-out', 'side': 'runner'},
-            {text: 'Set card counters', command: 'counter', 'prompt': 'How many counters?'},
-            {text: 'Advance card', command: 'adv-counter', 'prompt': 'How many counters?', side: 'corp'},
-            {text: 'Debug card', command: 'card-info'}
-        ];
         if (fixesPanel) {
+            var buttons = [
+                {text: 'Draw n cards', command: 'draw', prompt: 'How many to draw?'},
+                {text: 'Adjust credits', command: 'credit', prompt: 'How many credits?'},
+                {text: 'Adjust clicks', command: 'click', prompt: 'How many clicks?'},
+                {text: 'Adjust memory', command: 'memory', prompt: 'How much memory?', side: 'runner'},
+                {text: 'Adjust tags', command: 'tag', prompt: 'How many tags?', side: 'runner'},
+                {text: 'Adjust bad publicity', command: 'bp', prompt: 'How much bad publicity?', side: 'corp'},
+                {text: 'Adjust link', command: 'link', prompt: 'How much link?', side: 'runner'},
+                {text: 'Adjust hand size', command: 'handsize', prompt: 'What is your handsize?'},
+                {text: 'Rez card (ignoring all costs)', command: 'rez'},
+                {text: 'Rez all cards (ignoring all costs)', command: 'rez-all'},
+                {text: 'Take meat damage', command: 'take-meat', prompt: 'How much meat damage?', side: 'runner'},
+                {text: 'Take net damage', command: 'take-net', prompt: 'How much net damage?', side: 'runner'},
+                {text: 'Take brain damage', command: 'take-brain', prompt: 'How much brain damage?', side: 'runner'},
+                {text: 'Discard card', command: 'discard', prompt: 'Which card?', which: true},
+                {text: 'Remove card from game', command: 'rfg'},
+                {text: 'Put card on deck', command: 'deck', prompt: 'Which card?', which: true},
+                {text: 'Initiate trace', command: 'trace', prompt: 'Base strength?', side: 'corp'},
+                {text: 'Close active prompt', command: 'close-prompt'},
+                {text: 'Start a Psi game', command: 'psi', 'side': 'corp'},
+                {text: 'End a run', command: 'end-run', 'side': 'corp'},
+                {text: 'Jack out', command: 'jack-out', 'side': 'runner'},
+                {text: 'Set card counters', command: 'counter', 'prompt': 'How many counters?'},
+                {text: 'Advance card', command: 'adv-counter', 'prompt': 'How many counters?', side: 'corp'},
+                {text: 'Debug card', command: 'card-info'}
+            ];
+
             buttons.forEach((btn) => fixesPanel.appendChild(
                 createFixButton(btn)
             ));
         }
+
+        const logsPanel = document.querySelector('.panel.blue-shade.messages');
+        const logs = new Logs(logsPanel);
+        console.log(logs.analysis);
     }
 });
 
