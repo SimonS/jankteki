@@ -25,7 +25,7 @@
   "content_scripts": [
     {
       "matches": [
-        "http://www.jinteki.net/*", "https://jinteki.zaroth.net/*"
+        "http://www.jinteki.net/*", "https://www.jinteki.net/*", "https://jinteki.zaroth.net/*"
       ],
       "js": ["lib/models/User.js", "lib/friends.js", "lib/options.js", "inline/lobby.js", "inline/injector.js", "inline/options.js"],
       "css": ["inline/jankteki.css"],
