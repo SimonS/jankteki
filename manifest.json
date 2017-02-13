@@ -39,6 +39,7 @@
     "declarativeContent",
     "notifications",
     "storage",
-    "http://jinteki.net/*"
+    "http://jinteki.net/*",
+    "https://jinteki.net/*"
   ]
 }
