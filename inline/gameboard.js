@@ -4,12 +4,17 @@ var observer = new MutationObserver(function () {
     if (document.querySelector('#gameboard').style.display !== "none") {
 
         var hqNode = document.querySelector("[data-server='HQ']");
+        var gripNode = document.querySelector("[data-server='Grip']");
         var widenHqOption = document.body.classList.contains('widen-hq');
-        if(widenHqOption && hqNode) {
-          widenHqGlobal.start();
+        var side = getSide();
+
+        var nodeToWiden = side === 'runner' ? gripNode : hqNode;
+
+        if(widenHqOption && nodeToWiden) {
+          widenHqGlobal.start(nodeToWiden);
         }
 
-        if(widenHqOption && !hqNode) {
+        if(widenHqOption && !nodeToWiden) {
           widenHqGlobal.stop();
         }
 
