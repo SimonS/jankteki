@@ -2,6 +2,17 @@ var socket = io.connect(iourl + '/lobby');
 
 var observer = new MutationObserver(function () {
     if (document.querySelector('#gameboard').style.display !== "none") {
+
+        var hqNode = document.querySelector("[data-server='HQ']");
+        var widenHqOption = document.body.classList.contains('widen-hq');
+        if(widenHqOption && hqNode) {
+          widenHqGlobal.start();
+        }
+
+        if(widenHqOption && !hqNode) {
+          widenHqGlobal.stop();
+        }
+
         createFixesPanel();
 
         var fixesPanel = document.querySelector('#fixes-pane .panel');

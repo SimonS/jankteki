@@ -33,7 +33,7 @@
     }
   ],
   "options_page": "options/options.html",
-  "web_accessible_resources": ["inline/gameboard.js"],
+  "web_accessible_resources": ["inline/gameboard.js", "inline/widenHq.js"],
   "permissions": [
     "contextMenus",
     "declarativeContent",
