@@ -3,9 +3,9 @@ var observer = new MutationObserver(function () {
         var pinned = getOrCreatePinned();
 
         loadFriends().then(function (friends) {
-			var friendNames = Array.from(friends).map(friend => friend.toLowerCase());
+            var friendNames = Array.from(friends).map(friend => friend.toLowerCase());
             var onlineFriends = getAllPlayers()
-                .filter(player => friendNames.indexOf(player.innerText.toLowerCase()) !== -1);
+                .filter(player => friendNames.includes(player.innerText.toLowerCase()));
 
             pinned.innerHTML = '';
             Array.from(document.querySelectorAll('.gameline'))
@@ -13,10 +13,7 @@ var observer = new MutationObserver(function () {
 
             onlineFriends.forEach(function (player, i) {
                 var target = 'friend-' + i;
-
-                var gameLine = player.closest('.gameline');
-                gameLine.id = target;
-
+                player.id = target;
                 var li = document.createElement('li');
                 li.innerHTML = '<a href="#' + target + '">' + player.innerText + '</a>';
 
@@ -86,7 +83,7 @@ observer.observe(gameList, {childList: true});
 
 function getAllPlayers () {
     return Array.from(
-        document.querySelectorAll('.player span:not(.side)')
+        document.querySelectorAll('.user-status > span:first-child')
     );
 }
 
