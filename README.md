@@ -1,3 +1,11 @@
+## Ello! This Extension Is No Longer Developed
+
+It's been 2 years since I last developed this. Probably about 2 years since I last played Netrunner, unfortunately. Realistically, I'm not going to find time nor impetus to update this again. It was a huge joy to develop and test against. Thanks anyone who both used it and contributed.
+
+If anyone does wish to fork and build on Jankteki, they have my full support (not that there's anything in the license to stop them if I did).
+
+---
+
 This is an extension which provides enhancements for the jinteki.net website.
 
 ## Minimum Requirements
